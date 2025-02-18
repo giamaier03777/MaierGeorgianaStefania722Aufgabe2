@@ -85,6 +85,16 @@ public class CharakterController {
     public List<Charakter> getAlleCharakter() {
         return repo.getCharakterList();
     }
-}
 
 
+    public List<Charakter> filterCharakterbyRegion(String region) {
+        List<Charakter> filteredCharakterList = new ArrayList<>();
+        for (Charakter charakter : repo.getCharakterList()) {
+            if (Objects.equals(charakter.getRegion(), region)) {
+                filteredCharakterList.add(charakter);
+            }
+        }
+        return filteredCharakterList;
+    }
+
+   }
