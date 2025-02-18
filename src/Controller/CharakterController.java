@@ -125,3 +125,17 @@ public class CharakterController {
         return filteredCharakterList;
     }
 
+    public void addProduktToCharakter(int charakterId, Produkt produkt) {
+        Charakter charakter = repo.findCharacterbyId(charakterId);
+        if (charakter != null) {
+            charakter.addProdukt(produkt);
+        }
+    }
+
+    public void removeProduktFromCharakter(int charakterId, Produkt produkt) {
+        Charakter charakter = repo.findCharacterbyId(charakterId);
+        if (charakter != null) {
+            charakter.removeProdukt(produkt);
+        }
+    }
+    }
