@@ -1,6 +1,7 @@
 package src.Repository;
 
 
+import src.Controller.ProduktController;
 import src.Domain.Produkt;
 
 import java.util.ArrayList;
@@ -30,9 +31,9 @@ public class ProduktRepo {
         produktList.add(produkt);
     }
 
-    public Produkt findProdukttByName(String name) {
+    public Produkt findProduktByName(String name) {
         for (Produkt produkt : produktList) {
-            if (produkt.getName() == name) {
+            if (produkt.getName().equals(name)) {
                 return produkt;
             }
         }

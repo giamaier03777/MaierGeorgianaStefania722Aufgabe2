@@ -33,12 +33,12 @@ public class ProduktController {
     }
 
     public void removeProdukt(String name) {
-        Produkt produkt = repo.findProdukttByName(name);
+        Produkt produkt = repo.findProduktByName(name);
         if (produkt != null) {
-            repo.removeProdukt(repo.findProdukttByName(name));
+            repo.removeProdukt(repo.findProduktByName(name));
         }
         else {
-            System.out.println("Medikament nicht gefunden!");
+            System.out.println("Produkt nicht gefunden!");
         }
     }
 
@@ -51,7 +51,7 @@ public class ProduktController {
      * @param neuesUniversum the new universe associated with the product
      */
     public void updateProdukt(String name, String neuerName, int neuerPreis, String neuesUniversum) {
-        Produkt produkt = repo.findProdukttByName(name);
+        Produkt produkt = repo.findProduktByName(name);
 
         if (produkt != null) {
             if (!produkt.getName().equals(neuerName)) {
@@ -76,9 +76,9 @@ public class ProduktController {
      * @return the product with the specified name, or null if not found
      */
     public Produkt getProdukt(String name) {
-        Produkt produkt = repo.findProdukttByName(name);
+        Produkt produkt = repo.findProduktByName(name);
         if (produkt != null) {
-            return repo.findProdukttByName(name);
+            return repo.findProduktByName(name);
         }
         else {
             System.out.println("Produkt nicht gefunden!");
