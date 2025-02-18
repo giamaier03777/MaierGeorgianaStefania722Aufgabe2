@@ -97,4 +97,31 @@ public class CharakterController {
         return filteredCharakterList;
     }
 
-   }
+    public List<Produkt> sortiereProdukteEinesPatientenNachPreis(int id, boolean aufsteigend) {
+        Charakter charakter = repo.findCharacterbyId(id);
+        if (charakter == null) {
+            return new ArrayList<>();
+        }
+
+        List<Produkt> produkts = new ArrayList<>(charakter.getProdukteListe());
+        produkts.sort((p1, p2) -> {
+            int vergleich = Integer.compare(p1.getPreis(), p2.getPreis());
+            return aufsteigend ? vergleich : -vergleich;
+        });
+
+        return produkts;
+    }
+
+
+    public List<Charakter> filterCharakterProdukteByUniversum(String universum) {
+        List<Charakter> filteredCharakterList = new ArrayList<>();
+        for (Charakter charakter : repo.getCharakterList()) {
+            for (Produkt produkt : charakter.getProdukteListe()) {
+                if (Objects.equals(produkt.getUniversum(), universum)) {
+                    filteredCharakterList.add(charakter);
+                }
+            }
+        }
+        return filteredCharakterList;
+    }
+
